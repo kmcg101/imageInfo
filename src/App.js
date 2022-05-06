@@ -1,6 +1,6 @@
 // git init
 // git add .
-// git remote add origin git@github.com:kmcg101/mediaInfo.git
+// git remote add origin git@github.com:kmcg101/imageInfo.git
 // git commit -m 'first commit'
 // git push origin master
 

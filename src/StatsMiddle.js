@@ -20,10 +20,10 @@ function StatsMiddle(props) {
                 processedExtension = 'png'
             }
             if (processedExtension === processedFormat) {
-                return "notMismatch";
+                return "Match";
             }
             else {
-                return "mismatch"
+                return "MISMATCH"
             }
 
         }
@@ -35,7 +35,7 @@ function StatsMiddle(props) {
         <div className='statsMiddle'>
             <div className={`${extension === undefined ? "beforeDrop" : ""}`}>Extension: {extension}</div>
             <div className={`${format === undefined ? "beforeDrop" : ""}`}>Internal Format: {format}</div>
-            <div className={checkMismatch()}>MISMATCH!</div>
+            <div className='mismatch'>{checkMismatch()}</div>
         </div>
     );
 }
