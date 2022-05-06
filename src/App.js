@@ -9,15 +9,12 @@ import Dropzone from './Dropzone'
 import './App.css';
 import WidthComponent from './WidthComponent';
 import HeightComponent from './HeightComponent';
-import AspectRatio from './AspectRatio';
-import AudioChannel from './AudioChannel';
-import StatsLeft from './StatsLeft'
+
 import StatsMiddle from './StatsMiddle'
 
 
 function App(props) {
 
-  const [productIndex, setProductIndex] = useState(0);
   const [videoAttributes, setVideoAttributes] = useState([])
 
   const handleAttributesChange = (name, value) => {
@@ -27,19 +24,21 @@ function App(props) {
     }));
   }
 
+  const createWarning = () => {
+    
+  }
+
+
 
   return (
     <section className="container">
       <div className="contentArea">
 
-        <AspectRatio aspectRatio={videoAttributes.AspectRatio} />
         <div className='centerContent'>
           <WidthComponent width={videoAttributes.Width} />
-          <Dropzone handleAttributesChange={handleAttributesChange}/>
+          <Dropzone createWarning={createWarning} handleAttributesChange={handleAttributesChange}/>
           <div className='statsContainer'>
-            <StatsLeft fps={videoAttributes.FPS} duration={videoAttributes.Duration} />
-            <StatsMiddle extension={videoAttributes.Extension} fileSize={videoAttributes.FileSize} codec={videoAttributes.Codec} />
-            <AudioChannel value={videoAttributes.AudioCount} />
+            <StatsMiddle extension={videoAttributes.Extension} fileType={videoAttributes.FileType} format={videoAttributes.Format} />
           </div>
         </div>
         <div className='rightContent'>
@@ -48,7 +47,6 @@ function App(props) {
 
 
       </div>
-      <div className="warningArea">Warnings:</div>
 
 
     </section>

@@ -15,7 +15,7 @@ const baseStyle = {
   outline: "none",
   transition: "border .24s ease-in-out",
   left: "10px",
-  top: "570px"
+  top: "480px"
 };
 const acceptStyle = {
   borderColor: "#00e676",
@@ -29,19 +29,21 @@ const rejectStyle = {
 
 function Dropzone(props) {
   const [files, setFiles] = useState([]);
-  const [isVideo, setIsVideo] = useState([false]);
   
 
   const handleAttributesChange = (name, value) => {
     props.handleAttributesChange(name, value);
-    
+  }
+  const createWarning = (name, value) => {
+    props.createWarning(name, value);
   }
 
   const { getRootProps, getInputProps, isDragAccept, isDragReject } =
     useDropzone({
       maxFiles: 1,
       accept: {
-        'video/mp4': []
+        'image/png': [],
+        'image/jpeg': []
       },
 
 
@@ -59,22 +61,22 @@ function Dropzone(props) {
           console.log(result)
           const extArray = acceptedFiles[0].path.split(".")
           const ext = extArray[1]
-          setIsVideo(ext==="mp4")
+          
+
           handleAttributesChange("Extension", ext)
+
           handleAttributesChange("FileType", acceptedFiles[0].type)
-          
-          const ac= result.media.track[0].AudioCount
-          handleAttributesChange("AudioCount", ac==="1" ? 1 : 0)
-          
-          handleAttributesChange("Duration", result.media.track[1].Duration)
+       
           handleAttributesChange("FileSize", `${result.media.track[0].FileSize/1000000} MB`)
+
           handleAttributesChange("Format", result.media.track[0].Format)
+
           handleAttributesChange("Width", result.media.track[1].Width)
+
           handleAttributesChange("Height", result.media.track[1].Height)
-          handleAttributesChange("FPS", result.media.track[0].FrameRate)
-          handleAttributesChange("Codec", result.media.track[1].CodecID)
-          handleAttributesChange("AspectRatio", result.media.track[1].DisplayAspectRatio)
-          handleAttributesChange("Format", result.media.track[1].Format)
+
+
+       
 
         })
 
@@ -116,9 +118,9 @@ function Dropzone(props) {
   return (
     <div className='dropzone'>
       <div className="dropzoneImageGrandParent">
-      <div className="droppedImageHolder">{isVideo ? videoPreview : imagePreview}</div>
+      <div className="droppedImageHolder">{imagePreview}</div>
         <div {...getRootProps({ style })} className="dropZone">
-          <input {...getInputProps()} />Drop mp4 here
+          <input {...getInputProps()} />Drop PNG or JPG here
         </div>
         
       </div>

@@ -13,12 +13,7 @@
   height: 70%;
   display: flex;
 }
-.leftContent{
-  width: 17%;
-  display: flex;
-  align-items: center;
-  justify-content: right;
-}
+
 .rightContent{
   width: 17%;
   display: flex;
@@ -45,20 +40,15 @@
   display: flex;
   
 }
-.statsMiddle, .statsRight, .statsLeft{
+.statsMiddle{
   box-sizing: border-box;
-  width: 33%;
+  width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: left;
-  align-items: flex-start;
   padding-top: 15px;
   line-height: 1.5em;
-}
-.statsLeft, .statsMiddle{
-  padding-left: 15px;
+  padding-left: 200px;
   display: block;
-  font-size: 16px;
+  font-size: 30px;
   font-weight: 800;
   color: #5386e4
  
@@ -84,12 +74,12 @@
 }
 
 .titleText{
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 800;
   color: #5386e4
 }
 .normalText{
-  font-size: 18px;
+  font-size: 23px;
   font-weight: 200;
   color: #4c4b63
 
@@ -125,40 +115,15 @@ hr {
   flex-direction: column;
 }
 
-.aspectRatioCheck{
-  width: 30px;
-  font-weight: 800;
-  color: red;
-  font-size: 25px;
-  margin-left: 10px;
-  text-align: right;
-  font-family:'Times New Roman', Times, serif
-}
-.aspectRatioCheck.correct::after{
-  content: "√";
-  color: green;
-  font-size: 22px;
-  font-weight: 800;
-  
-}
-.aspectRatioCheck.incorrect::after{
-  content: "x";
-  font-weight: 400;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-.aspectRatioRow{
-  width: 90px;
-  font-weight: 200;
-  text-align: right;
-  letter-spacing: .03em;
- }
-
- .audioImage{
-   width: 100%;
-   height: 100%;
-   object-fit: contain;
- }
 
  .beforeDrop{
    opacity: .3;
+ }
+
+ .mismatch{
+  color: red;
+  font-weight: 800;
+ }
+ .notMismatch{
+   display: none;
  }
